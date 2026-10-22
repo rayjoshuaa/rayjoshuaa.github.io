@@ -77,3 +77,7 @@ main{padding-top:0!important}
 .tablewrap tr.is-current-week{scroll-margin-top:96px}
 @media(max-width:800px){.planner-nav .top{height:68px;min-height:68px}.planner-nav .mascot-dock{flex-basis:64px}.planner-nav .page-mascot{width:64px!important;height:64px!important}.school-status-wrap{margin-top:16px!important}}
 @media print{.planner-nav{display:none!important}}
+
+/* Emphasize teaching periods and times for quick scanning. */
+.lesson-period{font-size:12px!important;font-weight:700!important;color:#51404a!important;line-height:1.6;margin-top:5px}
+.modal-period{font-size:12px!important;font-weight:700!important;color:#51404a!important}
