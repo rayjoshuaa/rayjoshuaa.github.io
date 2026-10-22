@@ -8,12 +8,11 @@
   const sprite = button.querySelector('.mascot-sprite');
   const direction = button.querySelector('.mascot-direction');
   const reaction = button.querySelector('.mascot-reaction');
-  const toggle = dock.querySelector('.mascot-toggle');
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const clockwise = [5,8,7,6,3,0,1,2];
   let sector = -1, timers = [], boops = 0, lastBoop = 0, frame = 0, point;
-  const cell = (layer, index) => layer.style.backgroundPosition = `${index % 3 * 50}% ${Math.floor(index / 3) * 50}%`;
+  const cell = (layer, index) => {const frame=index+(layer===reaction?9:0);layer.style.backgroundPosition=`${frame%3*50}% ${Math.floor(frame/3)*20}%`;};
   const wrap = angle => Math.atan2(Math.sin(angle),Math.cos(angle));
   function aim() {
     frame = 0;
@@ -39,8 +38,6 @@
     if(!reduced.matches) sprite.animate([{transform:'scale(1)'},{transform:'scale(1.1,.86)',offset:.18},{transform:'scale(.95,1.08)',offset:.45},{transform:'scale(1)'}],{duration:420,easing:'ease-out'});
   });
   function reset(){reaction.style.opacity=0;direction.style.opacity=1;}
-  function setHidden(hidden){button.hidden=hidden;toggle.textContent=hidden?'Show mascot':'Hide mascot';toggle.setAttribute('aria-expanded',String(!hidden));try{localStorage.setItem('siamis-mascot-hidden',String(hidden));}catch{}}
-  toggle.addEventListener('click',()=>setHidden(!button.hidden));
-  try{setHidden(localStorage.getItem('siamis-mascot-hidden')==='true');}catch{}
+  cell(direction,4);cell(reaction,0);
   window.addEventListener('pagehide',()=>{timers.forEach(clearTimeout);cancelAnimationFrame(frame);});
 })();

@@ -49,3 +49,16 @@ body{font-family:Montserrat,Arial,sans-serif!important;font-size:14px!important;
 @media(max-height:850px) and (min-width:801px){.page-mascot{width:66px;height:66px}.mascot-dock{margin:4px 0}.side-label{margin-top:22px}.year{min-height:36px;padding-top:6px;padding-bottom:6px}}
 @media(max-width:800px){.mascot-dock{display:none}.school-status{flex-wrap:wrap;gap:12px;padding:14px}.current-school-week{padding-left:12px}.current-week-button{margin-left:0}.status-note{margin-left:0;display:block;margin-top:4px;width:fit-content}}
 @media print{.school-status,.mascot-dock,.current-week-tag{display:none!important}.lesson-period{color:#555}}
+
+/* Personal mascot sits above the status action, independent of the sidebar. */
+.school-status-wrap{position:relative;margin-top:92px}
+.school-status-wrap .school-status{margin-top:0}
+.school-status-wrap .mascot-dock{display:block!important;position:absolute;right:20px;bottom:calc(100% - 1px);margin:0!important;z-index:2}
+.school-status-wrap .page-mascot{width:132px!important;height:132px!important;display:block!important}
+.school-status-wrap .mascot-direction,.school-status-wrap .mascot-reaction{background-image:url('assets/mascot/teacher-chibi.webp');background-size:300% 600%}
+.school-status-wrap .mascot-direction{background-position:50% 20%}
+.school-status-wrap .mascot-reaction{background-position:0 60%}
+.tablewrap th:first-child,.tablewrap td:first-child{white-space:nowrap;min-width:100px}
+.tablewrap tr.is-current-week>td:first-child{font-weight:700;color:var(--wine);background:#f1e6ec}
+@media(max-width:800px){.school-status-wrap{margin-top:100px}.school-status-wrap .mascot-dock{right:12px}.school-status-wrap .page-mascot{width:120px!important;height:120px!important}.school-status-wrap .current-week-button{margin-left:auto}}
+@media print{.school-status-wrap{display:none!important}}
