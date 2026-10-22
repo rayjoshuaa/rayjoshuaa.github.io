@@ -62,3 +62,18 @@ body{font-family:Montserrat,Arial,sans-serif!important;font-size:14px!important;
 .tablewrap tr.is-current-week>td:first-child{font-weight:700;color:var(--wine);background:#f1e6ec}
 @media(max-width:800px){.school-status-wrap{margin-top:100px}.school-status-wrap .mascot-dock{right:12px}.school-status-wrap .page-mascot{width:120px!important;height:120px!important}.school-status-wrap .current-week-button{margin-left:auto}}
 @media print{.school-status-wrap{display:none!important}}
+
+/* Compact sticky navigation: breadcrumbs and personal mascot share one row. */
+main{padding-top:0!important}
+.planner-nav{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.planner-nav .top{min-height:80px;height:80px;padding:0;gap:16px;border:0;display:flex;align-items:center;justify-content:space-between}
+.planner-nav .breadcrumbs{min-width:0;flex:1}
+.planner-nav .mascot-dock{display:block!important;position:static;margin:0!important;flex:0 0 80px}
+.planner-nav .page-mascot{width:80px!important;height:80px!important;display:block!important}
+.planner-nav .mascot-direction,.planner-nav .mascot-reaction{background-image:url('assets/mascot/teacher-chibi.webp');background-size:300% 600%}
+.planner-nav .mascot-direction{background-position:50% 20%}
+.planner-nav .mascot-reaction{background-position:0 60%}
+.school-status-wrap{margin-top:20px!important}
+.tablewrap tr.is-current-week{scroll-margin-top:96px}
+@media(max-width:800px){.planner-nav .top{height:68px;min-height:68px}.planner-nav .mascot-dock{flex-basis:64px}.planner-nav .page-mascot{width:64px!important;height:64px!important}.school-status-wrap{margin-top:16px!important}}
+@media print{.planner-nav{display:none!important}}
