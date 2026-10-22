@@ -14,3 +14,19 @@ body{font-family:Montserrat,Arial,sans-serif!important;font-size:14px!important;
 .plan-content,.plan-content p,.plan-content li{font-size:14px;line-height:1.85}.plan-content .lesson-date{font-size:12px!important}.flow-label{font-size:11px}.tablewrap td{font-size:13px!important}.lesson{font-size:13px!important}.breadcrumbs{font-size:12px}.modal-breadcrumbs{font-size:11px}.resource-row .resource-title{font-size:13px}.resource-row small{font-size:11px}.search-field input,.filter-field select{font-size:12px}.plan-content .differentiation-grid h4{font-size:12px}@media(max-width:650px){.plan-content,.plan-content p,.plan-content li{font-size:13px;line-height:1.85}.breadcrumbs{font-size:10px}.modal-breadcrumbs{font-size:9px}.search-field input,.filter-field select{font-size:12px}}
 
 .filter-field select{border:0!important;border-radius:0!important;background:transparent!important;background-image:none!important;padding:10px 24px 10px 0!important;font-family:Montserrat,Arial,sans-serif!important;font-size:12px!important;box-shadow:none!important;line-height:1.5!important}.filter-field select:focus-visible{outline:none!important}.search-empty p{font-weight:400}
+
+/* Final heading, control and numeral refinements. */
+#detail .close{border-radius:7px!important}
+.tablewrap th{font-size:12px!important;font-weight:700!important;padding-top:18px;padding-bottom:18px}
+.lining-number{font-family:Montserrat,Arial,sans-serif;font-size:.83em;font-weight:500;letter-spacing:-.04em;font-variant-numeric:lining-nums tabular-nums;vertical-align:baseline}
+.week-picker{padding:0;display:block;min-width:180px;z-index:5}
+.week-picker summary{list-style:none;display:flex;align-items:center;gap:10px;min-height:46px;padding:0 36px 0 13px;cursor:pointer;font-size:12px;color:#51424b}
+.week-picker summary::-webkit-details-marker{display:none}
+.week-picker summary>.ui-icon{width:17px;height:17px;flex-shrink:0}
+.week-picker summary:focus-visible{outline:2px solid var(--wine);outline-offset:3px;border-radius:8px}
+.week-picker[open]{border-color:var(--wine);box-shadow:0 0 0 3px #682d4010}
+.week-picker[open] .filter-chevron{transform:rotate(-90deg)}
+.week-options{position:absolute;top:calc(100% + 7px);right:0;min-width:220px;padding:6px;background:#fff;border:1px solid #ded4d9;border-radius:10px;box-shadow:0 12px 30px #38242f22;max-height:350px;overflow-y:auto}
+.week-options button{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;border:0;border-radius:6px;background:#fff;text-align:left;padding:10px 12px;font-size:12px;color:#51424b;line-height:1.5}
+.week-options button:hover,.week-options button:focus-visible{background:#f8f3f5;outline:0}
+.week-options button[aria-pressed=true]{color:var(--wine);background:var(--wine-soft);font-weight:650}
