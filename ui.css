@@ -126,3 +126,8 @@ h1,h2,h3,h4,h5,h6,.eyebrow,.side-label,.brand-sub,.breadcrumbs,.lesson,.today-cl
 
 /* Keep year numbers the same size and weight as their heading. */
 #heading .lining-number{font-size:inherit;font-weight:inherit;letter-spacing:inherit}
+/* Fixed digit slots keep both clocks and their format labels steady. */
+.clock-time time{display:inline-flex;align-items:baseline;white-space:nowrap;letter-spacing:0}
+.clock-digit{display:inline-block;flex:0 0 .68em;width:.68em;text-align:center;letter-spacing:0}
+.clock-separator{display:inline-block;flex:0 0 .3em;width:.3em;text-align:center;letter-spacing:0}
+.clock-meridiem{display:inline-block;flex:0 0 1.8em;width:1.8em;margin-left:.3em;text-align:center;letter-spacing:0}

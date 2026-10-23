@@ -31,7 +31,20 @@
   function tick(now = new Date()) {
     const el = document.querySelector('.school-clock'); if (!el) return;
     const times = [formatter12.format(now),formatter24.format(now)];
-    el.querySelectorAll('time').forEach((time,i)=>{time.textContent=times[i];time.dateTime=now.toISOString()});
+    el.querySelectorAll('time').forEach((time,i)=>{
+      const value=times[i].replace(/\s+/g,' ');
+      const parts=value.match(/\d|:|[AP]M/g);
+      if (!time.children.length) {
+        parts.forEach(part=>{
+          const span=document.createElement('span');
+          span.className=/\d/.test(part)?'clock-digit':part===':'?'clock-separator':'clock-meridiem';
+          span.setAttribute('aria-hidden','true');span.textContent=part;time.appendChild(span);
+        });
+      } else {
+        parts.forEach((part,index)=>{if(time.children[index].textContent!==part)time.children[index].textContent=part});
+      }
+      time.setAttribute('aria-label',value);time.dateTime=now.toISOString();
+    });
     const current = status(now), label = el.querySelector('.clock-period');
     const text = current.label+(current.range?' · '+current.range:'');
     if (label.textContent !== text) label.textContent=text;
