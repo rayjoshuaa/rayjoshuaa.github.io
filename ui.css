@@ -120,3 +120,6 @@ h1,h2,h3,h4,h5,h6,.eyebrow,.side-label,.brand-sub,.breadcrumbs,.lesson,.today-cl
 
 /* The welcome heading leads the dashboard hierarchy. */
 #dashboard-title.dashboard-title{font-weight:700!important}.today-section-heading h2{font-weight:600!important}
+
+/* Match every year and subject title to the welcome heading. */
+#heading{font-weight:700!important}
