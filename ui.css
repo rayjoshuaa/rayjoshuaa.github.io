@@ -97,3 +97,13 @@ body,body *{font-family:Montserrat,Arial,sans-serif!important}
 /* Consistent Title Case for titles, navigation and topic names. */
 h1,h2,h3,h4,h5,h6,.eyebrow,.side-label,.brand-sub,.breadcrumbs,.lesson,.today-class,.today-slot strong,.status-label,.current-school-week strong,.status-note,.sectionhead h2,.tablewrap th,.resource-title,.dialog-nav button,.flow-label,.lesson-number,.card .num,.today-empty strong,.event-title,.badge,.current-week-button,.week-current-label{text-transform:capitalize!important}
 @media(max-width:800px){.primary-nav{margin-top:16px}.primary-nav .year{width:auto}.side-label{margin-top:12px!important}aside .years{display:flex;overflow-x:auto;overflow-y:hidden;padding-right:0;scrollbar-width:thin}}
+/* Refined term selection: a clear outline, compact label and checkmark. */
+.card{border-radius:12px;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.card .num{display:inline-flex;align-items:center;min-height:30px;padding:6px 10px;border-radius:6px;background:#f5f2f3;color:#77646e;font-size:12px!important;letter-spacing:.4px;line-height:1.3!important}
+.card.active,.card.active:hover{background:linear-gradient(145deg,#fff 60%,#fcf6f8)!important;border-color:#793b54!important;box-shadow:0 0 0 1px #793b54,0 6px 18px #682d400c!important}
+.card.active .num{background:#682d40;color:#fff}
+.card.active:after{content:''!important;display:block!important;position:absolute;top:29px;right:25px;width:7px;height:12px;border:solid #793b54;border-width:0 2px 2px 0;transform:rotate(45deg);background:transparent}
+.card.active h2{color:#512a3a}.card.active .foot{border-top:1px solid #ede0e6;padding-top:15px;margin-top:15px}.card:not(.active) .foot{border-top:1px solid transparent;padding-top:15px;margin-top:15px}
+.card:hover:not(.active){background:#fff;border-color:#b798a7;box-shadow:0 4px 14px #682d400a}.card:focus-visible{outline:3px solid #ba8c9f;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.card{transition:none}}
+.card{display:flex;flex-direction:column;align-items:stretch}.card .num{align-self:flex-start}.card .foot,.card.active .foot,.card:not(.active) .foot{margin-top:auto!important}.card p{margin-bottom:15px}
