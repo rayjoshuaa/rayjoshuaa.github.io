@@ -107,3 +107,9 @@ h1,h2,h3,h4,h5,h6,.eyebrow,.side-label,.brand-sub,.breadcrumbs,.lesson,.today-cl
 .card:hover:not(.active){background:#fff;border-color:#b798a7;box-shadow:0 4px 14px #682d400a}.card:focus-visible{outline:3px solid #ba8c9f;outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.card{transition:none}}
 .card{display:flex;flex-direction:column;align-items:stretch}.card .num{align-self:flex-start}.card .foot,.card.active .foot,.card:not(.active) .foot{margin-top:auto!important}.card p{margin-bottom:15px}
+
+/* Weekly table labels are uppercase; retain the established typeface. */
+.tablewrap thead th,.tablewrap thead th *{text-transform:uppercase!important}
+.dashboard-title{font-size:clamp(24px,2.6vw,34px);max-width:950px;text-transform:none!important;line-height:1.4}
+.school-status{gap:22px;align-items:center}.school-clock{border-left:1px solid var(--line);padding-left:24px;margin-left:auto;min-width:220px}.clock-times{display:grid;gap:6px;font-variant-numeric:tabular-nums}.clock-time{display:flex;align-items:baseline;gap:10px;white-space:nowrap}.clock-time time{font-size:19px;line-height:1.4;font-weight:700;color:var(--ink);letter-spacing:.2px}.clock-format{font-size:10px;color:var(--muted);font-weight:600}.clock-period{display:block;font-size:12px;line-height:1.6;color:var(--wine);font-weight:700;margin-top:9px}.clock-period-range{font-weight:500;color:var(--muted)}
+@media(max-width:1200px){.school-clock{margin-left:0}.school-status{flex-wrap:wrap}}@media(max-width:600px){.school-clock{border-left:0;border-top:1px solid var(--line);padding:16px 0 0;width:100%;min-width:0}.clock-times{grid-template-columns:repeat(2,minmax(0,1fr))}.clock-time{flex-direction:column;gap:0}.clock-time time{font-size:17px}}
