@@ -117,3 +117,6 @@ h1,h2,h3,h4,h5,h6,.eyebrow,.side-label,.brand-sub,.breadcrumbs,.lesson,.today-cl
 /* Primary 12-hour clock with a quiet, supplementary 24-hour time. */
 .clock-times{grid-template-columns:1fr;gap:3px}.clock-time:first-child time{font-size:24px;font-weight:700;letter-spacing:.2px}.clock-time:last-child time{font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0}.clock-time:last-child .clock-format{font-size:9px;font-weight:500}.clock-time:first-child .clock-format{font-size:9px;font-weight:500}.clock-period{margin-top:8px}
 @media(max-width:600px){.clock-times{grid-template-columns:1fr}.clock-time{flex-direction:row;gap:9px}.clock-time:first-child time{font-size:23px}.clock-time:last-child time{font-size:12px}}
+
+/* The welcome heading leads the dashboard hierarchy. */
+#dashboard-title.dashboard-title{font-weight:700!important}.today-section-heading h2{font-weight:600!important}
