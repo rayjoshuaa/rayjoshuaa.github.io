@@ -123,3 +123,6 @@ h1,h2,h3,h4,h5,h6,.eyebrow,.side-label,.brand-sub,.breadcrumbs,.lesson,.today-cl
 
 /* Match every year and subject title to the welcome heading. */
 #heading{font-weight:700!important}
+
+/* Keep year numbers the same size and weight as their heading. */
+#heading .lining-number{font-size:inherit;font-weight:inherit;letter-spacing:inherit}
