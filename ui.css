@@ -88,3 +88,6 @@ main{padding-top:0!important}
 
 /* One typeface throughout the planner, including headings and controls. */
 body,body *{font-family:Montserrat,Arial,sans-serif!important}
+
+/* Dashboard is a distinct home view; year pages contain only planning. */
+[hidden]{display:none!important}.dashboard-title{font-size:30px;font-weight:650;letter-spacing:-.7px;line-height:1.3;margin:28px 0 20px}.dashboard-link{margin-bottom:14px}.dashboard-title+.school-status-wrap{margin-top:0!important}.school-status-wrap[hidden]+.hero{margin-top:28px}
