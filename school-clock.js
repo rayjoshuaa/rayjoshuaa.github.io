@@ -28,7 +28,21 @@
     if (slot) return {label:slot[2],range:slot[0]+'–'+slot[1]};
     return {label:time<'08:00'?'Before School':time>='16:00'?'After School':'Between Periods'};
   }
+  function highlightLessons(now = new Date()) {
+    const date = SCHOOL_CALENDAR.bangkokDate(now);
+    const time = formatter24.format(now).slice(0,5);
+    document.querySelectorAll('.today-lesson[data-lesson-time]').forEach(row => {
+      const range = row.dataset.lessonTime.match(/^(\d{2}:\d{2})\s*[–−-]\s*(\d{2}:\d{2})$/);
+      const active = row.dataset.lessonDate === date && !!range && time >= range[1] && time < range[2];
+      row.classList.toggle('is-current-lesson', active);
+      if (active) row.setAttribute('aria-current', 'time');
+      else row.removeAttribute('aria-current');
+      const badge = row.querySelector('.today-now');
+      if (badge) badge.hidden = !active;
+    });
+  }
   function tick(now = new Date()) {
+    highlightLessons(now);
     const el = document.querySelector('.school-clock'); if (!el) return;
     const times = [formatter12.format(now),formatter24.format(now)];
     el.querySelectorAll('time').forEach((time,i)=>{
@@ -56,7 +70,8 @@
     el.innerHTML='<div class="clock-times"><div class="clock-time"><time></time><span class="clock-format">12-hour</span></div><div class="clock-time"><time></time><span class="clock-format">24-hour</span></div></div><span class="clock-period" aria-live="polite"></span>';
     container.appendChild(el);tick();
   }
-  window.SCHOOL_CLOCK={mount,tick,status};
+  window.SCHOOL_CLOCK={mount,tick,status,highlightLessons};
   setInterval(()=>tick(),1000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});
 })();
+

@@ -131,3 +131,17 @@ h1,h2,h3,h4,h5,h6,.eyebrow,.side-label,.brand-sub,.breadcrumbs,.lesson,.today-cl
 .clock-digit{display:inline-block;flex:0 0 .68em;width:.68em;text-align:center;letter-spacing:0}
 .clock-separator{display:inline-block;flex:0 0 .3em;width:.3em;text-align:center;letter-spacing:0}
 .clock-meridiem{display:inline-block;flex:0 0 1.8em;width:1.8em;margin-left:.3em;text-align:center;letter-spacing:0}
+
+
+/* Cover card outlines beneath the sticky breadcrumb across the full content gutter. */
+main{--planner-gutter:46px}
+.planner-nav{margin-inline:calc(-1 * var(--planner-gutter));padding-inline:var(--planner-gutter);isolation:isolate;background:var(--paper)}
+@media(max-width:1000px){main{--planner-gutter:25px}}
+@media(max-width:650px){main{--planner-gutter:20px}}
+/* The active lesson follows Thailand time, including simultaneous combined-year lessons. */
+.today-lesson-info{min-width:0;overflow-wrap:anywhere}
+.today-actions{flex-wrap:wrap}
+.today-lesson.is-current-lesson{background:#f4eaee;box-shadow:inset 4px 0 #682d40;border-radius:8px;padding-left:14px;padding-right:14px}
+.today-lesson.is-current-lesson .today-slot strong,.today-lesson.is-current-lesson h3{color:var(--wine)}
+.today-now{display:inline-block;margin-top:7px;padding:2px 7px;border-radius:4px;background:var(--wine);color:#fff;font-size:9px;font-weight:700;white-space:nowrap}
+@media(max-width:600px){.today-slot{flex-wrap:wrap}.today-now{margin-top:0}}
