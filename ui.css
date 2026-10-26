@@ -141,7 +141,7 @@ main{--planner-gutter:46px}
 /* The active lesson follows Thailand time, including simultaneous combined-year lessons. */
 .today-lesson-info{min-width:0;overflow-wrap:anywhere}
 .today-actions{flex-wrap:wrap}
-.today-lesson.is-current-lesson{background:#f4eaee;box-shadow:inset 4px 0 #682d40;border-radius:8px;padding-left:14px;padding-right:14px}
-.today-lesson.is-current-lesson .today-slot strong,.today-lesson.is-current-lesson h3{color:var(--wine)}
-.today-now{display:inline-block;margin-top:7px;padding:2px 7px;border-radius:4px;background:var(--wine);color:#fff;font-size:9px;font-weight:700;white-space:nowrap}
+.today-lesson.is-current-lesson{background:#fcfafb;box-shadow:none;border-radius:0}
+
+.today-now{display:inline-block;margin-top:5px;padding:0;background:none;color:#8b6878;font-size:9px;font-weight:600;white-space:nowrap}
 @media(max-width:600px){.today-slot{flex-wrap:wrap}.today-now{margin-top:0}}
