@@ -270,3 +270,15 @@ tr.is-current-week>td:first-child{box-shadow:none}
 /* Uniform, compact week rows */
 #rows>tr>td{padding-top:9px;padding-bottom:9px;vertical-align:middle}
 .material-btn{min-height:38px;padding:7px 12px}
+
+/* ===== Fix round 3 2026-10-28 (owner feedback) ===== */
+.brand::after{display:none}
+.sectionhead h2{padding-bottom:0}
+.sectionhead h2::after{display:none}
+.material-group-label.g-plan,.material-group-label.g-pres,.material-group-label.g-ref{color:var(--gold-deep)}
+.resource-row.row-plan .resource-title,.resource-row.row-pres .resource-title,.resource-row.row-ref .resource-title{color:var(--wine)}
+.week-current-label{background:var(--gold);color:var(--wine);padding:2px 8px;border-radius:999px;font-size:9px;letter-spacing:.08em}
+tr.is-current-week>td:first-child{background:#fdf6ec}
+main{display:flex;flex-direction:column}
+#content{margin-bottom:46px}
+#site-footer{margin-top:auto}

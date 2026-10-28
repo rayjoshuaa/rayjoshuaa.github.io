@@ -39,13 +39,13 @@
     }
     var iv = setInterval(function () {
       var elapsed = Date.now() - t0;
-      var target = (loaded || elapsed > 1500) ? 100 : Math.min(92, elapsed / 1500 * 92);
+      var target = (loaded || elapsed > 3200) ? 100 : Math.min(92, elapsed / 3200 * 92);
       p += (target - p) * 0.35 + 1.4;
       if (p >= 99.5) { p = 100; draw(); clearInterval(iv); setTimeout(function () { finish(false); }, 240); return; }
       draw();
     }, 90);
     el.addEventListener('click', function () { clearInterval(iv); finish(false); });
-    setTimeout(function () { clearInterval(iv); finish(false); }, 4200);
+    setTimeout(function () { clearInterval(iv); finish(false); }, 5500);
   })();
 
   /* ---------- Term progress (dashboard) ---------- */
@@ -97,34 +97,10 @@
   }
 
   /* ---------- Rows decoration: New badges, recents, friendly empty state ---------- */
-  var RECENT_UPDATES = { 'y5-t1-w10': '2026-10-28' };
-  function slugOf(v) { return String(v).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, ''); }
-  function isRecent(i) {
-    var keys = ['y' + year + '-t' + (term + 1) + '-w' + (i + 1),
-                'y' + year + '-' + slugOf(subject) + '-t' + (term + 1) + '-w' + (i + 1)];
-    if (String(year) === '10-11') keys.push('y10-t' + (term + 1) + '-w' + (i + 1), 'y11-t' + (term + 1) + '-w' + (i + 1));
-    for (var k = 0; k < keys.length; k++) {
-      var d = RECENT_UPDATES[keys[k]];
-      if (d) {
-        var days = (Date.now() - new Date(d + 'T00:00:00+07:00').getTime()) / 86400000;
-        if (days >= 0 && days <= 14) return true;
-      }
-    }
-    return false;
-  }
   var decorating = false;
   function decorate() {
     if (decorating) return; decorating = true;
     try {
-      $$('#rows tr').forEach(function (tr) {
-        var btn = $('.material-btn', tr); if (!btn) return;
-        var m = /materials\((\d+)\)/.exec(btn.getAttribute('onclick') || ''); if (!m) return;
-        var i = +m[1];
-        if (isRecent(i) && !$('.new-badge', tr)) {
-          var wn = $('.week-number', tr);
-          if (wn) wn.insertAdjacentHTML('afterend', '<span class="new-badge">New</span> ');
-        }
-      });
       var emptyP = $('.search-empty p');
       if (emptyP && !emptyP.dataset.enh) {
         emptyP.textContent = 'Try a different topic — for example “search engines” — or reset the filters to see every week.';
