@@ -39,13 +39,13 @@
     }
     var iv = setInterval(function () {
       var elapsed = Date.now() - t0;
-      var target = (loaded || elapsed > 3200) ? 100 : Math.min(92, elapsed / 3200 * 92);
+      var target = (loaded || elapsed > 5200) ? 100 : Math.min(92, elapsed / 5200 * 92);
       p += (target - p) * 0.35 + 1.4;
       if (p >= 99.5) { p = 100; draw(); clearInterval(iv); setTimeout(function () { finish(false); }, 240); return; }
       draw();
     }, 90);
     el.addEventListener('click', function () { clearInterval(iv); finish(false); });
-    setTimeout(function () { clearInterval(iv); finish(false); }, 5500);
+    setTimeout(function () { clearInterval(iv); finish(false); }, 8500);
   })();
 
   /* ---------- Term progress (dashboard) ---------- */

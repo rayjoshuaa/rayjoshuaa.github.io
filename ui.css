@@ -288,3 +288,12 @@ main{display:flex;flex-direction:column}
 .primary-nav{margin-top:6px}
 .side-label{margin:12px 10px 8px}
 .loader-chibi{width:128px;height:128px}
+
+/* ===== Fix round 5 2026-10-28 (owner feedback) ===== */
+.brand-logo{width:50px;height:50px}
+.brand-sub{font-size:11px!important;letter-spacing:0!important}
+.primary-nav{margin-top:12px}
+aside .years{overflow-y:visible;flex:none;grid-auto-rows:minmax(34px,auto)}
+.year{min-height:40px}
+main{min-height:100vh;min-height:100dvh}
+#content:empty{margin-bottom:14px}
