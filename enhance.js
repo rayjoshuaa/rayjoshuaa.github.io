@@ -68,16 +68,8 @@
     } catch (e) { prog.hidden = true; }
   }
 
-  /* ---------- Position memory + search recents (wrappers) ---------- */
-  var POS_KEY = 'siamis-pos', REC_KEY = 'siamis-recents';
-  function savePos() {
-    try { store.set(POS_KEY, JSON.stringify({ y: (typeof year !== 'undefined' ? year : null), t: term, s: subject })); } catch (e) {}
-  }
-  ['selectYear', 'selectTerm', 'selectSubject', 'mainMenu'].forEach(function (name) {
-    var orig = window[name];
-    if (typeof orig !== 'function') return;
-    window[name] = function () { var r = orig.apply(null, arguments); savePos(); return r; };
-  });
+  /* ---------- Search recents ---------- */
+  var REC_KEY = 'siamis-recents';
   var recTimer = null, origSearch = window.updateSearch;
   if (typeof origSearch === 'function') {
     window.updateSearch = function (v) {
@@ -156,17 +148,8 @@
   var status = $('#school-status');
   if (status) new MutationObserver(function () { updateTermUI(); }).observe(status, { childList: true });
 
-  /* ---------- Boot: restore saved position ---------- */
+  /* ---------- Boot ---------- */
   function boot() {
-    try {
-      var pos = JSON.parse(store.get(POS_KEY) || 'null');
-      if (pos && pos.y !== null && pos.y !== undefined) {
-        selectYear(pos.y);
-        var subs = Object.keys((window.CURRICULUM || curriculum)[String(pos.y)] || {});
-        if (pos.s && subs.indexOf(pos.s) !== -1 && pos.s !== subject) selectSubject(pos.s);
-        if (pos.t) selectTerm(pos.t);
-      }
-    } catch (e) {}
     updateTermUI();
     decorate();
   }
