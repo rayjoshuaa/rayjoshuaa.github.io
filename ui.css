@@ -297,3 +297,13 @@ aside .years{overflow-y:visible;flex:none;grid-auto-rows:minmax(34px,auto)}
 .year{min-height:40px}
 main{min-height:100vh;min-height:100dvh}
 #content:empty{margin-bottom:14px}
+
+/* ===== Fix round 6 2026-10-28 (owner feedback) ===== */
+body{display:flex;flex-direction:column;min-height:100dvh}
+main{flex:1;padding-bottom:22px}
+#site-footer{padding-bottom:4px}
+.week-current-label::before,.week-current-label:before{display:none!important}
+.week-current-label{padding:3px 10px;box-shadow:0 1px 2px #682d4026}
+#rows>tr>td{padding-top:8px!important;padding-bottom:8px!important;line-height:1.45}
+.tablewrap th{padding-top:10px;padding-bottom:10px}
+.lesson-hint{margin-top:1px}
