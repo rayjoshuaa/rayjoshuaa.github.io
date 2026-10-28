@@ -323,3 +323,6 @@ main{flex:1;padding-bottom:22px}
 /* ===== Fix round 9 2026-10-28 (owner feedback) ===== */
 .eyebrow{text-transform:uppercase!important}
 .week-current-label{background:linear-gradient(90deg,var(--wine) 55%,var(--gold-deep))}
+
+/* ===== Fix round 10 2026-10-28 (owner feedback) ===== */
+.week-current-label{background:var(--wine)}
