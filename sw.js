@@ -1,7 +1,7 @@
 /* SIAMIS Computer Lesson Plan — service worker (2026-10-28).
    Network-first for pages/code so lesson data is never stale;
    cache-first for images/fonts so the site still opens on weak Wi-Fi. */
-var CACHE = 'siamis-cache-v1';
+var CACHE = 'siamis-cache-v2';
 self.addEventListener('install', function (e) { self.skipWaiting(); });
 self.addEventListener('activate', function (e) {
   e.waitUntil(
@@ -16,7 +16,7 @@ self.addEventListener('fetch', function (e) {
   var isCode = e.request.mode === 'navigate' || /\.(?:html|js|css|json)$/.test(url.pathname);
   if (isCode) {
     e.respondWith(
-      fetch(e.request).then(function (r) {
+      fetch(e.request, { cache: 'no-store' }).then(function (r) {
         var copy = r.clone();
         caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
         return r;

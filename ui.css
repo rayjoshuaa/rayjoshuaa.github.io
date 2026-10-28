@@ -282,3 +282,9 @@ tr.is-current-week>td:first-child{background:#fdf6ec}
 main{display:flex;flex-direction:column}
 #content{margin-bottom:46px}
 #site-footer{margin-top:auto}
+
+/* ===== Fix round 4 2026-10-28 (owner feedback) ===== */
+.brand{border-bottom:none;padding-bottom:2px}
+.primary-nav{margin-top:6px}
+.side-label{margin:12px 10px 8px}
+.loader-chibi{width:128px;height:128px}
