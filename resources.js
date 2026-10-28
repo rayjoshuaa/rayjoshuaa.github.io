@@ -116,6 +116,14 @@ window.LESSON_RESOURCES = {
       "url": "materials/y1/term1/week10/Y1 Computing T1 W10 Lesson Plan.pdf",
       "name": "Y1 Computing T1 W10 Lesson Plan.pdf"
     },
+    "presentation1": {
+      "url": "materials/y1/term1/week10/Y1 Computing T1 W10 Lesson 1 Presentation.pptx",
+      "name": "Y1 Computing T1 W10 Lesson 1 Presentation.pptx"
+    },
+    "presentation2": {
+      "url": "materials/y1/term1/week10/Y1 Computing T1 W10 Lesson 2 Presentation.pptx",
+      "name": "Y1 Computing T1 W10 Lesson 2 Presentation.pptx"
+    },
     "reference": {
       "url": "materials/y1/term1/week10/Y1 Computing T1 W10 Lesson Reference.pdf",
       "name": "Y1 Computing T1 W10 Lesson Reference.pdf"
