@@ -32,7 +32,19 @@ function matchesQuery(value){const normal=v=>String(v).normalize('NFKD').replace
 function periodLabel(lesson){const slot=window.LESSON_TIMETABLE?.[String(year)]?.[subject]?.[lesson-1];return slot&&slot.period?`Period ${slot.period}${slot.time?' · '+slot.time:''}`:'Period · timetable pending'}
 function updateSchoolStatus(){const date=SCHOOL_CALENDAR.bangkokDate(),current=SCHOOL_CALENDAR.current(date),title=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Bangkok',weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date(date+'T12:00:00+07:00'));document.querySelector('#school-status').innerHTML=`<div class="today-date">${icon('calendar')}<div><span class="status-label">Today · Thailand</span><time datetime="${date}">${title}</time></div></div><div class="current-school-week">${current.term!==undefined?`<span class="status-label">Academic Year 2026–2027</span><strong>Term ${current.term+1} · Week ${current.week+1}</strong>${current.label?`<span class="status-note">${current.label}</span>`:''}`:`<strong>${current.label}</strong>`}</div>${year!==null&&current.term!==undefined&&course()?'<button type="button" class="current-week-button" onclick="goToCurrentWeek()">Go to current week</button>':''}`;window.SCHOOL_CLOCK.mount();renderTodayLessons(date)}
 
-function openTodayLesson(y,s,t,w,l,files=false){selectYear(y);selectSubject(s);selectTerm(t);if(files)materials(w);else details(w,l)}
+let dashboardDialogState=null;
+function openTodayLesson(y,s,t,w,l,files=false){
+ if(year===null){
+  dashboardDialogState={year,subject,term,terms,query,filter};
+  year=y;subject=s;term=t;terms=curriculum[String(y)][s].terms;
+ }else{selectYear(y);selectSubject(s);selectTerm(t)}
+ if(files)materials(w);else details(w,l)
+}
+function restoreDashboardDialogState(){
+ if(!dashboardDialogState)return;
+ ({year,subject,term,terms,query,filter}=dashboardDialogState);
+ dashboardDialogState=null;
+}
 function renderTodayLessons(date){
  const el=document.querySelector('#today-lessons'),state=SCHOOL_CALENDAR.current(date);
  const day=new Intl.DateTimeFormat('en-GB',{weekday:'long',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z'));
@@ -93,7 +105,7 @@ function materials(i){openResources(i)}
 let pageScrollY=0;
 function lockBackground(){pageScrollY=window.scrollY;document.documentElement.classList.add('modal-open');document.body.classList.add('modal-open');document.body.style.position='fixed';document.body.style.top=`-${pageScrollY}px`;document.body.style.width='100%'}
 function unlockBackground(){document.documentElement.classList.remove('modal-open');document.body.classList.remove('modal-open');document.body.style.position='';document.body.style.top='';document.body.style.width='';window.scrollTo(0,pageScrollY)}
-document.querySelector('#detail').addEventListener('close',unlockBackground);
+document.querySelector('#detail').addEventListener('close',()=>{restoreDashboardDialogState();unlockBackground()});
 document.querySelector('.print-icon').innerHTML=icon('print');document.querySelector('.close-icon').innerHTML=icon('close');
 document.querySelector('dialog').addEventListener('click',e=>{if(e.target!==e.currentTarget)return;const r=e.currentTarget.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.currentTarget.close()});mainMenu();let lastSchoolDate=SCHOOL_CALENDAR.bangkokDate();setInterval(()=>{const date=SCHOOL_CALENDAR.bangkokDate();if(date!==lastSchoolDate){lastSchoolDate=date;updateSchoolStatus();if(document.querySelector('#rows'))rows()}},30000);
 </script><script src="page-mascot.js?v=20261022-2"></script></body></html>
