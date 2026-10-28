@@ -246,3 +246,27 @@ tr.is-current-week>td:first-child{box-shadow:inset 3px 0 var(--gold)}
   body{background:#fff!important}
   @page{margin:14mm}
 }
+
+/* ===== Fix round 2026-10-28 evening (owner feedback) ===== */
+.brand{padding-bottom:10px}
+.brand-logo{width:44px;height:44px}
+.brand-name{font-size:27px}
+.brand-copy{min-width:0}
+.brand-sub{font-size:9px!important;letter-spacing:.05em;white-space:nowrap;margin-top:2px}
+.side-label{margin:18px 10px 10px}
+.top{padding-bottom:10px;min-height:0}
+.hero{margin:16px 0}
+.dashboard-title{margin:8px 0 12px}
+/* Materials groups: each group gets its own label color */
+.material-group-label.g-plan{color:var(--wine)}
+.material-group-label.g-pres{color:var(--gold-deep)}
+.material-group-label.g-ref{color:#8a7d84}
+.resource-row.row-plan .resource-title{color:var(--wine)}
+.resource-row.row-pres .resource-title{color:var(--gold-deep)}
+/* Current week: simple text, no pill */
+.week-current-label{display:inline-block;background:none;color:var(--gold-deep);padding:0;margin:0 0 0 9px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;vertical-align:middle}
+tr.is-current-week>td:first-child{box-shadow:none}
+.week-number{white-space:nowrap}
+/* Uniform, compact week rows */
+#rows>tr>td{padding-top:9px;padding-bottom:9px;vertical-align:middle}
+.material-btn{min-height:38px;padding:7px 12px}

@@ -1,6 +1,6 @@
-/* SIAMIS Computer Lesson Plan — design refresh enhancements (2026-10-28).
-   Loading screen, position memory, My Year pin, deep links, completeness
-   dots, search recents, term progress, footer date, mascot celebrations.
+/* SIAMIS Computer Lesson Plan — enhancement layer (2026-10-28, fix round 2).
+   Loading screen, position memory, search recents, term progress,
+   dialog group coloring, footer date, mascot celebrations.
    Loaded after the main app script; everything degrades gracefully. */
 (function () {
   'use strict';
@@ -48,11 +48,7 @@
     setTimeout(function () { clearInterval(iv); finish(false); }, 4200);
   })();
 
-  /* ---------- Term pill + term progress ---------- */
-  var pill = document.createElement('span');
-  pill.className = 'term-pill'; pill.id = 'term-pill'; pill.hidden = true;
-  var top = $('.planner-nav .top'), dock = $('#mascot-dock');
-  if (top) { if (dock) top.insertBefore(pill, dock); else top.appendChild(pill); }
+  /* ---------- Term progress (dashboard) ---------- */
   var wrap = $('.school-status-wrap');
   var prog = document.createElement('div');
   prog.className = 'term-progress'; prog.id = 'term-progress'; prog.hidden = true;
@@ -62,32 +58,26 @@
   function updateTermUI() {
     try {
       var cur = window.SCHOOL_CALENDAR && SCHOOL_CALENDAR.current();
-      if (!cur || cur.term === undefined) { pill.hidden = true; prog.hidden = true; return; }
+      if (!cur || cur.term === undefined) { prog.hidden = true; return; }
       var total = (window.CURRICULUM || curriculum)['1'].Computing.terms[cur.term].weeks.length;
       var pct = Math.round((cur.week + 1) / total * 100);
-      pill.textContent = 'Term ' + (cur.term + 1) + ' · Week ' + (cur.week + 1);
-      pill.hidden = false;
       $('#tp-label').textContent = 'Term ' + (cur.term + 1) + ' progress — Week ' + (cur.week + 1) + ' of ' + total;
       $('#tp-pct').textContent = pct + '%';
       $('#tp-fill').style.width = pct + '%';
       prog.hidden = false;
-    } catch (e) { pill.hidden = true; prog.hidden = true; }
+    } catch (e) { prog.hidden = true; }
   }
 
-  /* ---------- Position memory + wrappers ---------- */
-  var POS_KEY = 'siamis-pos', PIN_KEY = 'siamis-my-year', REC_KEY = 'siamis-recents';
+  /* ---------- Position memory + search recents (wrappers) ---------- */
+  var POS_KEY = 'siamis-pos', REC_KEY = 'siamis-recents';
   function savePos() {
     try { store.set(POS_KEY, JSON.stringify({ y: (typeof year !== 'undefined' ? year : null), t: term, s: subject })); } catch (e) {}
   }
-  ['selectYear', 'selectTerm', 'selectSubject'].forEach(function (name) {
+  ['selectYear', 'selectTerm', 'selectSubject', 'mainMenu'].forEach(function (name) {
     var orig = window[name];
     if (typeof orig !== 'function') return;
-    window[name] = function () { var r = orig.apply(null, arguments); savePos(); refreshPinUI(); return r; };
+    window[name] = function () { var r = orig.apply(null, arguments); savePos(); return r; };
   });
-  var origMenu = window.mainMenu;
-  if (typeof origMenu === 'function') {
-    window.mainMenu = function () { var r = origMenu.apply(null, arguments); savePos(); refreshPinUI(); return r; };
-  }
   var recTimer = null, origSearch = window.updateSearch;
   if (typeof origSearch === 'function') {
     window.updateSearch = function (v) {
@@ -106,40 +96,7 @@
     };
   }
 
-  /* ---------- My Year pin ---------- */
-  var yearsNav = $('.years');
-  var pinBar = document.createElement('div');
-  pinBar.className = 'my-year-bar';
-  pinBar.innerHTML = '<button type="button" id="pin-btn"></button>';
-  if (yearsNav && yearsNav.parentNode) yearsNav.parentNode.insertBefore(pinBar, yearsNav.nextSibling);
-  function pinnedYear() { return store.get(PIN_KEY); }
-  function refreshPinUI() {
-    var btn = $('#pin-btn'); if (!btn) return;
-    var pin = pinnedYear();
-    if (pin) btn.textContent = '★ Year ' + pin.replace('-', '–') + ' is my year — tap to unpin';
-    else if (typeof year !== 'undefined' && year !== null) btn.textContent = '☆ Pin Year ' + yearLabel() + ' as my year';
-    else btn.textContent = '☆ Open a year to pin it';
-    markPinned();
-  }
-  function markPinned() {
-    var pin = pinnedYear(); if (!yearsNav) return;
-    $$('.year', yearsNav).forEach(function (b) {
-      var is = pin && (b.getAttribute('onclick') || '').indexOf("'" + pin + "'") !== -1;
-      b.classList.toggle('pinned', !!is);
-      var star = $('.pin-star', b);
-      if (is && !star) { var s = document.createElement('span'); s.className = 'pin-star'; s.textContent = '★'; b.appendChild(s); }
-      if (!is && star) star.remove();
-    });
-  }
-  pinBar.addEventListener('click', function () {
-    var pin = pinnedYear();
-    if (pin && typeof year !== 'undefined' && String(year) === pin) { store.set(PIN_KEY, ''); try { localStorage.removeItem(PIN_KEY); } catch (e) {} }
-    else if (typeof year !== 'undefined' && year !== null) store.set(PIN_KEY, String(year));
-    refreshPinUI();
-  });
-  if (yearsNav) new MutationObserver(function () { markPinned(); }).observe(yearsNav, { childList: true });
-
-  /* ---------- Rows decoration: completeness dots, New badges, recents ---------- */
+  /* ---------- Rows decoration: New badges, recents, friendly empty state ---------- */
   var RECENT_UPDATES = { 'y5-t1-w10': '2026-10-28' };
   function slugOf(v) { return String(v).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, ''); }
   function isRecent(i) {
@@ -167,17 +124,6 @@
           var wn = $('.week-number', tr);
           if (wn) wn.insertAdjacentHTML('afterend', '<span class="new-badge">New</span> ');
         }
-        if (btn.parentElement.querySelector('.mat-dots')) return;
-        var r = {};
-        try { r = resource(i) || {}; } catch (e) {}
-        var plan = !!(r.lessonPlan || r.lessonPlanDocx);
-        var slides = (r.presentation1 || r.presentation ? 1 : 0) + (r.presentation2 ? 1 : 0);
-        var ref = !!r.reference;
-        var label = 'Materials: lesson plan ' + (plan ? 'included' : 'missing') + ', presentations ' + slides + ' of 2, reference ' + (ref ? 'included' : 'missing');
-        var dots = document.createElement('span');
-        dots.className = 'mat-dots'; dots.title = label; dots.setAttribute('role', 'img'); dots.setAttribute('aria-label', label);
-        dots.innerHTML = '<i class="' + (plan ? 'on' : '') + '"></i><i class="' + (slides === 2 ? 'full' : slides === 1 ? 'on' : '') + '"></i><i class="' + (ref ? 'on' : '') + '"></i>';
-        btn.parentElement.appendChild(dots);
       });
       var emptyP = $('.search-empty p');
       if (emptyP && !emptyP.dataset.enh) {
@@ -200,6 +146,24 @@
     } catch (e) {}
     decorating = false;
   }
+
+  /* ---------- Materials dialog: color rows by group ---------- */
+  function decorateDialog() {
+    var list = $('.material-list'); if (!list) return;
+    var group = '';
+    $$('#resourcecontent .material-list > *').forEach(function (node) {
+      if (node.classList.contains('material-group-label')) {
+        group = node.classList.contains('g-plan') ? 'row-plan' :
+                node.classList.contains('g-pres') ? 'row-pres' :
+                node.classList.contains('g-ref') ? 'row-ref' : '';
+      } else if (node.classList.contains('resource-row') && group) {
+        node.classList.add(group);
+      }
+    });
+  }
+  var rc = $('#resourcecontent');
+  if (rc) new MutationObserver(function () { decorateDialog(); }).observe(rc, { childList: true });
+
   document.addEventListener('click', function (e) {
     var chip = e.target.closest ? e.target.closest('.recent-chip') : null;
     if (chip) {
@@ -216,61 +180,18 @@
   var status = $('#school-status');
   if (status) new MutationObserver(function () { updateTermUI(); }).observe(status, { childList: true });
 
-  /* ---------- Copy link to a week ---------- */
-  window.copyWeekLink = function (i) {
-    var url = location.origin + location.pathname + '#/week/' + encodeURIComponent(String(year)) + '/' +
-      encodeURIComponent(subject) + '/' + (term + 1) + '/' + (i + 1);
-    function done() {
-      var fb = $('.copy-feedback');
-      if (fb) { fb.textContent = 'Link copied ✓'; setTimeout(function () { fb.textContent = ''; }, 2600); }
-      var mascot = $('.page-mascot');
-      if (mascot) mascot.click();
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(url).then(done).catch(function () { fallback(); });
-    } else fallback();
-    function fallback() {
-      var ta = document.createElement('textarea');
-      ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); } catch (e) {}
-      ta.remove(); done();
-    }
-  };
-
-  /* ---------- Boot: deep link, pin, saved position ---------- */
+  /* ---------- Boot: restore saved position ---------- */
   function boot() {
-    var navigated = false;
-    var dh = /^#\/week\/([^/]+)\/([^/]+)\/(\d+)\/(\d+)$/.exec(location.hash || '');
-    if (dh) {
-      try {
-        var y = decodeURIComponent(dh[1]), subjName = decodeURIComponent(dh[2]);
-        selectYear(y);
-        var subjects = Object.keys((window.CURRICULUM || curriculum)[String(y)] || {});
-        var match = subjects.filter(function (s) { return s === subjName; })[0];
-        if (match && match !== subject) selectSubject(match);
-        selectTerm(Math.max(0, +dh[3] - 1));
-        materials(Math.max(0, +dh[4] - 1));
-        navigated = true;
-      } catch (e) {}
-    }
-    if (!navigated) {
-      var pin = pinnedYear();
-      if (pin) { try { selectYear(pin); navigated = true; } catch (e) {} }
-    }
-    if (!navigated) {
-      try {
-        var pos = JSON.parse(store.get(POS_KEY) || 'null');
-        if (pos && pos.y !== null && pos.y !== undefined) {
-          selectYear(pos.y);
-          var subs = Object.keys((window.CURRICULUM || curriculum)[String(pos.y)] || {});
-          if (pos.s && subs.indexOf(pos.s) !== -1 && pos.s !== subject) selectSubject(pos.s);
-          if (pos.t) selectTerm(pos.t);
-        }
-      } catch (e) {}
-    }
+    try {
+      var pos = JSON.parse(store.get(POS_KEY) || 'null');
+      if (pos && pos.y !== null && pos.y !== undefined) {
+        selectYear(pos.y);
+        var subs = Object.keys((window.CURRICULUM || curriculum)[String(pos.y)] || {});
+        if (pos.s && subs.indexOf(pos.s) !== -1 && pos.s !== subject) selectSubject(pos.s);
+        if (pos.t) selectTerm(pos.t);
+      }
+    } catch (e) {}
     updateTermUI();
-    refreshPinUI();
     decorate();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
