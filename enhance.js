@@ -1,6 +1,6 @@
 /* SIAMIS Computer Lesson Plan — enhancement layer (2026-10-28, fix round 2).
    Loading screen, position memory, search recents, term progress,
-   dialog group coloring, footer date, mascot celebrations.
+   dialog group coloring, footer date.
    Loaded after the main app script; everything degrades gracefully. */
 (function () {
   'use strict';
@@ -137,10 +137,6 @@
     if (chip) {
       var input = $('#lesson-search');
       if (input) { input.value = chip.dataset.q; updateSearch(chip.dataset.q); input.focus(); }
-    }
-    if (e.target.closest && e.target.closest('#resourcecontent a[download]')) {
-      var mascot = $('.page-mascot');
-      if (mascot) setTimeout(function () { mascot.click(); }, 350);
     }
   });
   var content = $('#content');

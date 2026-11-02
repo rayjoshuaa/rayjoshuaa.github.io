@@ -1,7 +1,7 @@
 /* SIAMIS Computer Lesson Plan — service worker (2026-10-28).
    Network-first for pages/code so lesson data is never stale;
    cache-first for images/fonts so the site still opens on weak Wi-Fi. */
-var CACHE = 'siamis-cache-v2';
+var CACHE = 'siamis-cache-v3';
 self.addEventListener('install', function (e) { self.skipWaiting(); });
 self.addEventListener('activate', function (e) {
   e.waitUntil(
