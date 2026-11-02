@@ -166,6 +166,23 @@
       .catch(function () {});
   })();
 
+
+  /* ---------- Teacher Tools dialog ---------- */
+  var toolsDialog = $('#tools-dialog');
+  window.openTeacherTools = function () {
+    if (!toolsDialog || toolsDialog.open) return;
+    if (typeof lockBackground === 'function') lockBackground();
+    toolsDialog.showModal();
+  };
+  if (toolsDialog) {
+    toolsDialog.addEventListener('close', function () {
+      if (typeof unlockBackground === 'function') unlockBackground();
+    });
+    toolsDialog.addEventListener('click', function (e) {
+      if (e.target === toolsDialog) toolsDialog.close();
+    });
+  }
+
   /* ---------- Service worker (offline shell) ---------- */
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     navigator.serviceWorker.register('sw.js').catch(function () {});

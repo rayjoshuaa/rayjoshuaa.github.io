@@ -314,3 +314,24 @@ main{flex:1;padding-bottom:22px}
 
 /* ===== Fix round 10 2026-10-28 (owner feedback) ===== */
 .week-current-label{background:var(--wine)}
+
+/* ===== Teacher Tools (2026-11-02): header button + modal, in the mascot's old spot ===== */
+.tools-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;min-height:40px;padding:10px 14px;background:#fff;border:1px solid #e0d1da;border-radius:8px;color:var(--wine);font-family:Montserrat,Arial,sans-serif;font-size:11px;font-weight:600;white-space:nowrap;cursor:pointer}
+.tools-btn:hover{background:#f3e9ee;border-color:#cbb0be}
+.tools-btn:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+.tools-btn .ui-icon{width:16px;height:16px}
+.tools-label-short{display:none}
+@media(max-width:800px){.tools-btn{min-height:36px;padding:8px 10px;font-size:10px}.tools-label-full{display:none}.tools-label-short{display:inline}}
+.tools-dialog{padding:0;overflow:hidden;width:min(92vw,560px);max-width:560px;max-height:90dvh;border-radius:16px;border:1px solid #e1d5db;box-shadow:0 30px 100px #2e152238}
+.tools-dialog[open]{display:flex;flex-direction:column}
+.tools-dialog::backdrop{background:#251e256b;backdrop-filter:blur(3px)}
+.tools-dialog .close{position:static;float:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;width:38px;height:38px;min-height:38px;border:1px solid #e5dce1;border-radius:50%;background:#faf7f8;padding:0;margin:0;color:#75616d;transition:.15s}
+.tools-dialog .close .ui-icon{width:18px;height:18px;stroke-width:1.7}
+.tools-dialog .close:hover{background:var(--wine);color:#fff;border-color:var(--wine)}
+.tools-dialog .close:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+.tools-body p{margin:0 0 16px}
+.tools-body .resource-row{flex-wrap:nowrap;align-items:center}
+.tools-body .resource-row>div{flex:1 1 auto;min-width:0}
+.tools-body .resource-row small{max-width:none}
+.tools-body .resource-row .unavailable,.tools-body .resource-row .resource-actions{flex:0 0 auto;margin-left:0}
+@media(max-width:650px){.tools-dialog{width:calc(100vw - 20px);max-height:94dvh;border-radius:12px}}
