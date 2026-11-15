@@ -164,6 +164,10 @@ window.LESSON_RESOURCES = {
       "url": "materials/y1/term1/week12/Y1 Computing T1 W12 Lesson 1 Presentation.pptx",
       "name": "Y1 Computing T1 W12 Lesson 1 Presentation.pptx"
     },
+    "presentation2": {
+      "url": "materials/y1/term1/week12/Y1 Computing T1 W12 Lesson 2 Presentation.pptx",
+      "name": "Y1 Computing T1 W12 Lesson 2 Presentation.pptx"
+    },
     "reference": {
       "url": "materials/y1/term1/week12/Y1 Computing T1 W12 Lesson Reference.pdf",
       "name": "Y1 Computing T1 W12 Lesson Reference.pdf"
