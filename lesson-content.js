@@ -1109,7 +1109,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "26 November 2026",
+        "date": "24 November 2026",
         "objective": "By the end of this lesson, students will be able to correct an error and explain an improved response from the mock examination.",
         "flow": [
           {
@@ -1198,7 +1198,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "3 December 2026",
+        "date": "1 December 2026",
         "objective": "By the end of this lesson, students will be able to complete any scheduled assessment activity and follow the school’s completion routine.",
         "flow": [
           {
@@ -1287,7 +1287,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "7 January 2027",
+        "date": "5 January 2027",
         "objective": "By the end of this lesson, students will be able to open Scratch with support, locate key areas and save a project.",
         "flow": [
           {
@@ -1376,7 +1376,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "14 January 2027",
+        "date": "12 January 2027",
         "objective": "By the end of this lesson, students will be able to change a backdrop and switch between normal and enlarged stage views.",
         "flow": [
           {
@@ -1465,7 +1465,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "21 January 2027",
+        "date": "19 January 2027",
         "objective": "By the end of this lesson, students will be able to identify a visible output and an audible output from a program.",
         "flow": [
           {
@@ -1554,7 +1554,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "28 January 2027",
+        "date": "26 January 2027",
         "objective": "By the end of this lesson, students will be able to control a prepared game using mouse and keyboard inputs and describe its feedback.",
         "flow": [
           {
@@ -1643,7 +1643,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "4 February 2027",
+        "date": "2 February 2027",
         "objective": "By the end of this lesson, students will be able to connect a green-flag event to a short sequence and run it.",
         "flow": [
           {
@@ -1732,7 +1732,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "11 February 2027",
+        "date": "9 February 2027",
         "objective": "By the end of this lesson, students will be able to correct an error and explain an improved response from the mock examination.",
         "flow": [
           {
@@ -1821,7 +1821,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "18 February 2027",
+        "date": "16 February 2027",
         "objective": "By the end of this lesson, students will be able to complete any scheduled assessment activity and follow the school’s completion routine.",
         "flow": [
           {
@@ -1910,7 +1910,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "4 March 2027",
+        "date": "2 March 2027",
         "objective": "By the end of this lesson, students will be able to add or change a costume block and describe the visible result.",
         "flow": [
           {
@@ -1999,7 +1999,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "11 March 2027",
+        "date": "9 March 2027",
         "objective": "By the end of this lesson, students will be able to find an event block by category and replace a prepared start event.",
         "flow": [
           {
@@ -2088,7 +2088,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "18 March 2027",
+        "date": "16 March 2027",
         "objective": "By the end of this lesson, students will be able to correct an error and explain an improved response from the mock examination.",
         "flow": [
           {
@@ -2177,7 +2177,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "25 March 2027",
+        "date": "23 March 2027",
         "objective": "By the end of this lesson, students will be able to complete any scheduled assessment activity and follow the school’s completion routine.",
         "flow": [
           {
@@ -2266,7 +2266,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "1 April 2027",
+        "date": "30 March 2027",
         "objective": "By the end of this lesson, students will be able to make and explain a small change to a prepared Scratch program.",
         "flow": [
           {
@@ -2355,7 +2355,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "22 April 2027",
+        "date": "20 April 2027",
         "objective": "By the end of this lesson, students will be able to test the game, correct a simple problem and explain how it works.",
         "flow": [
           {
@@ -2444,7 +2444,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "29 April 2027",
+        "date": "27 April 2027",
         "objective": "By the end of this lesson, students will be able to test the game, correct a simple problem and explain how it works.",
         "flow": [
           {
@@ -2533,7 +2533,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "6 May 2027",
+        "date": "4 May 2027",
         "objective": "By the end of this lesson, students will be able to test the game, correct a simple problem and explain how it works.",
         "flow": [
           {
@@ -2622,7 +2622,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "13 May 2027",
+        "date": "11 May 2027",
         "objective": "By the end of this lesson, students will be able to test the game, correct a simple problem and explain how it works.",
         "flow": [
           {
@@ -2780,7 +2780,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "27 May 2027",
+        "date": "25 May 2027",
         "objective": "By the end of this lesson, students will be able to test a prediction against a known answer and suggest adding more varied examples when a prediction is wrong.",
         "flow": [
           {
@@ -2869,7 +2869,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "10 June 2027",
+        "date": "8 June 2027",
         "objective": "By the end of this lesson, students will be able to draw a proposed AI helper, explain its task and name one possible mistake and one safety rule.",
         "flow": [
           {
@@ -2958,7 +2958,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "17 June 2027",
+        "date": "15 June 2027",
         "objective": "By the end of this lesson, students will be able to correct an error and explain an improved response from the mock examination.",
         "flow": [
           {
@@ -3047,7 +3047,7 @@ window.LESSON_CONTENT = {
         "holiday": false
       },
       {
-        "date": "24 June 2027",
+        "date": "22 June 2027",
         "objective": "By the end of this lesson, students will be able to complete any scheduled assessment activity and follow the school’s completion routine.",
         "flow": [
           {
